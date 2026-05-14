@@ -5,3 +5,4 @@
 *.out
 .terragrunt-cache
 terragrunt.iml
+.terraform.lock.hcl
