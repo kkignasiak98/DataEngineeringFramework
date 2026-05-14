@@ -33,7 +33,10 @@
         "tamasfe.even-better-toml",
         "jnoortheen.nix-ide",
         "ms-azuretools.vscode-docker",
-        "golang.go"
+        "golang.go",
+        "gruntwork.terragrunt-ls",
+        "opentofu.vscode-opentofu",
+        "seemscloud.terragrunt-hcl-formatter"
       ]
     }
   },
