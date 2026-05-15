@@ -6,7 +6,8 @@
     "go-task@3.45.5",
     "terragrunt@1.0.3",
     "git-lfs@3.7.1",
-    "opentofu@1.11.6"
+    "opentofu@1.11.6",
+    "google-cloud-sdk@565.0.0"
   ],
   "shell": {
     "init_hook": [
