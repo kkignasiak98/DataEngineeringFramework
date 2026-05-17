@@ -25,13 +25,14 @@ terraform {
 }
 
 # Make sure the required GCP APIs are enabled before the custom role is
-# created. The `config_path` is provided as a value from the stack so the
-# unit stays portable.
-dependency "api" {
-  config_path = values.api_path
-
-  mock_outputs                            = {}
-  mock_outputs_allowed_terraform_commands = ["validate", "plan", "init"]
+# created. We don't need any outputs from the `api` unit -- we only need it
+# to be applied first -- so we use the `dependencies` block (note the plural)
+# which expresses ordering without trying to read outputs.
+#
+# The path to the sibling `api` unit is provided as a value from the parent
+# stack, so this unit stays portable.
+dependencies {
+  paths = [values.api_path]
 }
 
 inputs = {
