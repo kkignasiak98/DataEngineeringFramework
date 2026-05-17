@@ -4,5 +4,6 @@
 *.tfstate.backup
 *.out
 .terragrunt-cache
+.terragrunt-stack
 terragrunt.iml
 .terraform.lock.hcl
