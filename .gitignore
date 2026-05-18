@@ -1,0 +1,10 @@
+.terraform
+.vscode
+*.tfstate
+*.tfstate.backup
+*.out
+.terragrunt-cache
+.terragrunt-stack
+terragrunt.iml
+.terraform.lock.hcl
+.infracost

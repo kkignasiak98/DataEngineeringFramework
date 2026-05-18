@@ -4,9 +4,11 @@
     "opencode@1.14.35",
     "gh@2.92.0",
     "go-task@3.45.5",
-    "terragrunt@1.0.3",
-    "terraform@1.14.9",
-    "git-lfs@3.7.1"
+    "git-lfs@3.7.1",
+    "google-cloud-sdk@565.0.0"
+  ],
+  "include": [
+    "path:./devbox/plugins/iac/plugin.json"
   ],
   "shell": {
     "init_hook": [

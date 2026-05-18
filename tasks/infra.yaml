@@ -1,0 +1,65 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+
+  cost_breakdown:
+    desc: "Generate a cost breakdown report for Terraform modules using Infracost"
+    dir: infrastructure
+    cmds:
+      - infracost breakdown --path . --format table
+
+  lint:
+    desc: "Lint Terraform modules using tflint"
+    dir: infrastructure/modules
+    cmds:
+      - tflint --recursive
+
+  scan:
+    desc: "Scan Terraform modules for misconfigurations using Trivy"
+    dir: infrastructure/modules
+    cmds:
+      - trivy config .
+
+  format:
+    desc: "Format all Terragrunt HCL and OpenTofu Terraform files in the infrastructure directory"
+    dir: infrastructure
+    cmds:
+      - terragrunt hcl fmt 
+      - tofu fmt -recursive ./modules
+
+  format_check:
+    desc: "Check formatting of all Terragrunt HCL and OpenTofu Terraform files without making changes"
+    dir: infrastructure
+    cmds:
+      - terragrunt hcl fmt --check
+      - tofu fmt -recursive --check ./modules
+
+  plan_and_scan:
+    desc: "Run terragrunt plan for a specific environment (usage: task plan ENV=dev)"
+    requires:
+      vars: [ENV]
+    vars:
+      PLAN_DIR: '/tmp/terragrunt-plans'
+    cmds:
+      - cmd: mkdir -p {{.PLAN_DIR}}
+      - cmd: |
+          echo "Processing environment: {{.ENV}}"
+          cd infrastructure/environments/{{.ENV}} && \
+          terragrunt stack generate && \
+          terragrunt stack run plan --out-dir={{.PLAN_DIR}}/{{.ENV}} --json-out-dir={{.PLAN_DIR}}/{{.ENV}}-json --non-interactive
+      - cmd: trivy config {{.PLAN_DIR}}/{{.ENV}}
+
+  plan_and_scan_all:
+    desc: Run terragrunt plan across all environments in infrastructure/environments/
+    vars:
+      ENVIRONMENTS:
+        sh: ls infrastructure/environments/
+    cmds:
+      - for:
+          var: ENVIRONMENTS
+          split: "\n"
+        task: plan_and_scan
+        vars:
+          ENV: "{{.ITEM}}"

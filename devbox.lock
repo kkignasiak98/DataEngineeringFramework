@@ -149,6 +149,102 @@
         }
       }
     },
+    "google-cloud-sdk@565.0.0": {
+      "last_modified": "2026-04-27T06:11:55Z",
+      "resolved": "github:NixOS/nixpkgs/6368eda62c9775c38ef7f714b2555a741c20c72d#google-cloud-sdk",
+      "source": "devbox-search",
+      "version": "565.0.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/pz510zby42pv75xx8q3jdrvadshyb4ic-google-cloud-sdk-565.0.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/pz510zby42pv75xx8q3jdrvadshyb4ic-google-cloud-sdk-565.0.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/3gdg56g0p2z5wc4i5xxp1m881pd7i5m5-google-cloud-sdk-565.0.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/3gdg56g0p2z5wc4i5xxp1m881pd7i5m5-google-cloud-sdk-565.0.0"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/is595ix2k5xl3qcfc77jppfjp24bxzla-google-cloud-sdk-565.0.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/is595ix2k5xl3qcfc77jppfjp24bxzla-google-cloud-sdk-565.0.0"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/khvnvj3as6isr2pl5azyhx33h4njrr5i-google-cloud-sdk-565.0.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/khvnvj3as6isr2pl5azyhx33h4njrr5i-google-cloud-sdk-565.0.0"
+        }
+      }
+    },
+    "infracost@0.10.44": {
+      "last_modified": "2026-04-23T13:07:47Z",
+      "resolved": "github:NixOS/nixpkgs/01fbdeef22b76df85ea168fbfe1bfd9e63681b30#infracost",
+      "source": "devbox-search",
+      "version": "0.10.44",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/1vbiqgq7m6ihy7ipcv9xc3qgh1z0nq56-infracost-0.10.44",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/1vbiqgq7m6ihy7ipcv9xc3qgh1z0nq56-infracost-0.10.44"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/mghkacyyq4c401cvshqacrd7f5cf5h6b-infracost-0.10.44",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/mghkacyyq4c401cvshqacrd7f5cf5h6b-infracost-0.10.44"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/d4pps4gbq0mr3vbngmj6h4bix3pndh08-infracost-0.10.44",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/d4pps4gbq0mr3vbngmj6h4bix3pndh08-infracost-0.10.44"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/kflp37mwk2w1sldkwaza8m54ligwdnrj-infracost-0.10.44",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/kflp37mwk2w1sldkwaza8m54ligwdnrj-infracost-0.10.44"
+        }
+      }
+    },
     "opencode@1.14.35": {
       "last_modified": "2026-05-06T12:40:13Z",
       "resolved": "github:NixOS/nixpkgs/07800bee2b362f6c73fe17cb1593a260c5e183c6#opencode",
@@ -187,51 +283,51 @@
         }
       }
     },
-    "terraform@1.14.9": {
+    "opentofu@1.11.6": {
       "last_modified": "2026-04-23T13:07:47Z",
-      "resolved": "github:NixOS/nixpkgs/01fbdeef22b76df85ea168fbfe1bfd9e63681b30#terraform",
+      "resolved": "github:NixOS/nixpkgs/01fbdeef22b76df85ea168fbfe1bfd9e63681b30#opentofu",
       "source": "devbox-search",
-      "version": "1.14.9",
+      "version": "1.11.6",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/599ha3dq1mn0k8p93gmvisll138n0xws-terraform-1.14.9",
+              "path": "/nix/store/v9gabchzd6n9jrsllaskzrhj4h6a8abi-opentofu-1.11.6",
               "default": true
             }
           ],
-          "store_path": "/nix/store/599ha3dq1mn0k8p93gmvisll138n0xws-terraform-1.14.9"
+          "store_path": "/nix/store/v9gabchzd6n9jrsllaskzrhj4h6a8abi-opentofu-1.11.6"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/4w4rp0435dfy1407np47ry0b15r5w9k0-terraform-1.14.9",
+              "path": "/nix/store/bbx49kfdnrmv74mk89js0i49r3l1yi7l-opentofu-1.11.6",
               "default": true
             }
           ],
-          "store_path": "/nix/store/4w4rp0435dfy1407np47ry0b15r5w9k0-terraform-1.14.9"
+          "store_path": "/nix/store/bbx49kfdnrmv74mk89js0i49r3l1yi7l-opentofu-1.11.6"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/hr2kldlgaxf4gb918i386cm9w8xnaif9-terraform-1.14.9",
+              "path": "/nix/store/fkry22v21d1qmi0fp49fhnwxwzq8bdn8-opentofu-1.11.6",
               "default": true
             }
           ],
-          "store_path": "/nix/store/hr2kldlgaxf4gb918i386cm9w8xnaif9-terraform-1.14.9"
+          "store_path": "/nix/store/fkry22v21d1qmi0fp49fhnwxwzq8bdn8-opentofu-1.11.6"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/mjrd83by016cxblwh5aja645jnh3qmbj-terraform-1.14.9",
+              "path": "/nix/store/b4x57qvhcasxyhkadk6pbpfj6rr1fb0r-opentofu-1.11.6",
               "default": true
             }
           ],
-          "store_path": "/nix/store/mjrd83by016cxblwh5aja645jnh3qmbj-terraform-1.14.9"
+          "store_path": "/nix/store/b4x57qvhcasxyhkadk6pbpfj6rr1fb0r-opentofu-1.11.6"
         }
       }
     },
@@ -280,6 +376,102 @@
             }
           ],
           "store_path": "/nix/store/6wdq2kxpqdlxza2lw013mxcwpmjzbqqb-terragrunt-1.0.3"
+        }
+      }
+    },
+    "tflint@0.61.0": {
+      "last_modified": "2026-05-08T21:03:27Z",
+      "resolved": "github:NixOS/nixpkgs/b3da656039dc7a6240f27b2ef8cc6a3ef3bccae7#tflint",
+      "source": "devbox-search",
+      "version": "0.61.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/9sgf1krk97nsfcmw3aghxb463lb4y246-tflint-0.61.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/9sgf1krk97nsfcmw3aghxb463lb4y246-tflint-0.61.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/dbdmhrz6k2zhgh4clahn1va39x99wrrv-tflint-0.61.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/dbdmhrz6k2zhgh4clahn1va39x99wrrv-tflint-0.61.0"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/6iyqcll001rqis3xg1fgvxxjrwkm0j81-tflint-0.61.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/6iyqcll001rqis3xg1fgvxxjrwkm0j81-tflint-0.61.0"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/p812wlxlbkrfqc195385ssdxbp4pl4a4-tflint-0.61.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/p812wlxlbkrfqc195385ssdxbp4pl4a4-tflint-0.61.0"
+        }
+      }
+    },
+    "trivy@0.69.3": {
+      "last_modified": "2026-04-23T13:07:47Z",
+      "resolved": "github:NixOS/nixpkgs/01fbdeef22b76df85ea168fbfe1bfd9e63681b30#trivy",
+      "source": "devbox-search",
+      "version": "0.69.3",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/sfvah45v72q7iszab57w474k1hlldipb-trivy-0.69.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/sfvah45v72q7iszab57w474k1hlldipb-trivy-0.69.3"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/wzip1zgwvfsra07vfnr2sm8x761zbqyc-trivy-0.69.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/wzip1zgwvfsra07vfnr2sm8x761zbqyc-trivy-0.69.3"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/l62zagvpbrabhw2q45z6vddrf0xwwyqd-trivy-0.69.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/l62zagvpbrabhw2q45z6vddrf0xwwyqd-trivy-0.69.3"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/291g5h3946aw4k4s74l4waskm72h6xvp-trivy-0.69.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/291g5h3946aw4k4s74l4waskm72h6xvp-trivy-0.69.3"
         }
       }
     }
