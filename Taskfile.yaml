@@ -14,6 +14,18 @@ tasks:
     cmds:
       - trivy config .
 
+  tf_format:
+      dir: infrastructure
+      cmds:
+        - terragrunt hcl fmt 
+        - tofu fmt -recursive ./modules
+
+  tf_format_check:
+      dir: infrastructure
+      cmds:
+        - terragrunt hcl fmt --check
+        - tofu fmt -recursive --check ./modules
+
   plan:
     desc: "Run terragrunt plan for a specific environment (usage: task plan ENV=dev)"
     requires:
