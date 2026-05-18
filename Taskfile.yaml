@@ -33,11 +33,11 @@ tasks:
     desc: Run terragrunt plan across all environments in infrastructure/environments/
     vars:
       ENVIRONMENTS:
-        sh: ls -1d infrastructure/environments/*/ 2>/dev/null | xargs -I {} basename {} | tr '\n' ' ' | xargs
+        sh: ls infrastructure/environments/
     cmds:
       - for:
           var: ENVIRONMENTS
-          split: " "
+          split: "\n"
         task: plan
         vars:
           ENV: "{{.ITEM}}"
