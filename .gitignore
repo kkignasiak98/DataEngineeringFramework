@@ -7,3 +7,4 @@
 .terragrunt-stack
 terragrunt.iml
 .terraform.lock.hcl
+.infracost

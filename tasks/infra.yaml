@@ -4,6 +4,12 @@ version: '3'
 
 tasks:
 
+  cost_breakdown:
+    desc: "Generate a cost breakdown report for Terraform modules using Infracost"
+    dir: infrastructure
+    cmds:
+      - infracost breakdown --path . --format table
+
   lint_tf:
     desc: "Lint Terraform modules using tflint"
     dir: infrastructure/modules
