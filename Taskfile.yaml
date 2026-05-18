@@ -8,3 +8,24 @@ tasks:
     dir: infrastructure
     cmds:
       -  terragrunt run -- fmt --recursive
+
+  scan_tf:
+    dir: infrastructure/modules
+    cmds:
+      - trivy config .
+
+  plan_all:
+    desc: Run terragrunt plan across all environments in infrastructure/environments/
+    vars:
+      PLAN_DIR: '/tmp/terragrunt-plans'
+      ENVIRONMENTS:
+        sh: ls -1d infrastructure/environments/*/ 2>/dev/null | xargs -I {} basename {} | tr '\n' ' '
+    cmds:
+      - cmd: mkdir -p {{.PLAN_DIR}}
+      - for: { var: ENVIRONMENTS, split: " " }
+        cmd: |
+          echo "Processing environment: {{.ITEM}}"
+          cd infrastructure/environments/{{.ITEM}} && \
+          terragrunt stack generate && \
+          terragrunt stack run plan --out-dir={{.PLAN_DIR}}/{{.ITEM}} --json-out-dir={{.PLAN_DIR}}/{{.ITEM}}-json --non-interactive
+      - cmd: trivy config {{.PLAN_DIR}}/
