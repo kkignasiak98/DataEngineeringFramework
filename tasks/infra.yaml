@@ -10,33 +10,33 @@ tasks:
     cmds:
       - infracost breakdown --path . --format table
 
-  lint_tf:
+  lint:
     desc: "Lint Terraform modules using tflint"
     dir: infrastructure/modules
     cmds:
       - tflint --recursive
 
-  scan_tf:
+  scan:
     desc: "Scan Terraform modules for misconfigurations using Trivy"
     dir: infrastructure/modules
     cmds:
       - trivy config .
 
-  tf_format:
+  format:
     desc: "Format all Terragrunt HCL and OpenTofu Terraform files in the infrastructure directory"
     dir: infrastructure
     cmds:
       - terragrunt hcl fmt 
       - tofu fmt -recursive ./modules
 
-  tf_format_check:
+  format_check:
     desc: "Check formatting of all Terragrunt HCL and OpenTofu Terraform files without making changes"
     dir: infrastructure
     cmds:
       - terragrunt hcl fmt --check
       - tofu fmt -recursive --check ./modules
 
-  plan:
+  plan_and_scan:
     desc: "Run terragrunt plan for a specific environment (usage: task plan ENV=dev)"
     requires:
       vars: [ENV]
@@ -51,7 +51,7 @@ tasks:
           terragrunt stack run plan --out-dir={{.PLAN_DIR}}/{{.ENV}} --json-out-dir={{.PLAN_DIR}}/{{.ENV}}-json --non-interactive
       - cmd: trivy config {{.PLAN_DIR}}/{{.ENV}}
 
-  plan_all:
+  plan_and_scan_all:
     desc: Run terragrunt plan across all environments in infrastructure/environments/
     vars:
       ENVIRONMENTS:
@@ -60,6 +60,6 @@ tasks:
       - for:
           var: ENVIRONMENTS
           split: "\n"
-        task: plan
+        task: plan_and_scan
         vars:
           ENV: "{{.ITEM}}"
