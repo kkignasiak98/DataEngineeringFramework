@@ -5,6 +5,8 @@
   "packages": [
     "terragrunt@1.0.3",
     "opentofu@1.11.6",
-    "trivy@0.69.3"
+    "trivy@0.69.3",
+    "tflint@0.61.0",
+    "infracost@0.10.44"
   ]
 }

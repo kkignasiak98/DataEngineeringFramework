@@ -4,6 +4,12 @@ version: '3'
 
 tasks:
 
+  lint_tf:
+    desc: "Lint Terraform modules using tflint"
+    dir: infrastructure/modules
+    cmds:
+      - tflint --recursive
+
   scan_tf:
     desc: "Scan Terraform modules for misconfigurations using Trivy"
     dir: infrastructure/modules
