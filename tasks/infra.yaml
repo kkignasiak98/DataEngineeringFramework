@@ -1,0 +1,54 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  format_terragrunt:
+    dir: infrastructure
+    cmds:
+      -  terragrunt run -- fmt --recursive
+
+  scan_tf:
+    dir: infrastructure/modules
+    cmds:
+      - trivy config .
+
+  tf_format:
+      dir: infrastructure
+      cmds:
+        - terragrunt hcl fmt 
+        - tofu fmt -recursive ./modules
+
+  tf_format_check:
+      dir: infrastructure
+      cmds:
+        - terragrunt hcl fmt --check
+        - tofu fmt -recursive --check ./modules
+
+  plan:
+    desc: "Run terragrunt plan for a specific environment (usage: task plan ENV=dev)"
+    requires:
+      vars: [ENV]
+    vars:
+      PLAN_DIR: '/tmp/terragrunt-plans'
+    cmds:
+      - cmd: mkdir -p {{.PLAN_DIR}}
+      - cmd: |
+          echo "Processing environment: {{.ENV}}"
+          cd infrastructure/environments/{{.ENV}} && \
+          terragrunt stack generate && \
+          terragrunt stack run plan --out-dir={{.PLAN_DIR}}/{{.ENV}} --json-out-dir={{.PLAN_DIR}}/{{.ENV}}-json --non-interactive
+      - cmd: trivy config {{.PLAN_DIR}}/{{.ENV}}
+
+  plan_all:
+    desc: Run terragrunt plan across all environments in infrastructure/environments/
+    vars:
+      ENVIRONMENTS:
+        sh: ls infrastructure/environments/
+    cmds:
+      - for:
+          var: ENVIRONMENTS
+          split: "\n"
+        task: plan
+        vars:
+          ENV: "{{.ITEM}}"
