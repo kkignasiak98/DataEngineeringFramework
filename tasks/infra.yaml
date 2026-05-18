@@ -5,21 +5,24 @@ version: '3'
 tasks:
 
   scan_tf:
+    desc: "Scan Terraform modules for misconfigurations using Trivy"
     dir: infrastructure/modules
     cmds:
       - trivy config .
 
   tf_format:
-      dir: infrastructure
-      cmds:
-        - terragrunt hcl fmt 
-        - tofu fmt -recursive ./modules
+    desc: "Format all Terragrunt HCL and OpenTofu Terraform files in the infrastructure directory"
+    dir: infrastructure
+    cmds:
+      - terragrunt hcl fmt 
+      - tofu fmt -recursive ./modules
 
   tf_format_check:
-      dir: infrastructure
-      cmds:
-        - terragrunt hcl fmt --check
-        - tofu fmt -recursive --check ./modules
+    desc: "Check formatting of all Terragrunt HCL and OpenTofu Terraform files without making changes"
+    dir: infrastructure
+    cmds:
+      - terragrunt hcl fmt --check
+      - tofu fmt -recursive --check ./modules
 
   plan:
     desc: "Run terragrunt plan for a specific environment (usage: task plan ENV=dev)"
