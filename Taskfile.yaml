@@ -14,18 +14,30 @@ tasks:
     cmds:
       - trivy config .
 
+  plan:
+    desc: "Run terragrunt plan for a specific environment (usage: task plan ENV=dev)"
+    requires:
+      vars: [ENV]
+    vars:
+      PLAN_DIR: '/tmp/terragrunt-plans'
+    cmds:
+      - cmd: mkdir -p {{.PLAN_DIR}}
+      - cmd: |
+          echo "Processing environment: {{.ENV}}"
+          cd infrastructure/environments/{{.ENV}} && \
+          terragrunt stack generate && \
+          terragrunt stack run plan --out-dir={{.PLAN_DIR}}/{{.ENV}} --json-out-dir={{.PLAN_DIR}}/{{.ENV}}-json --non-interactive
+      - cmd: trivy config {{.PLAN_DIR}}/{{.ENV}}
+
   plan_all:
     desc: Run terragrunt plan across all environments in infrastructure/environments/
     vars:
-      PLAN_DIR: '/tmp/terragrunt-plans'
       ENVIRONMENTS:
-        sh: ls -1d infrastructure/environments/*/ 2>/dev/null | xargs -I {} basename {} | tr '\n' ' '
+        sh: ls -1d infrastructure/environments/*/ 2>/dev/null | xargs -I {} basename {} | tr '\n' ' ' | xargs
     cmds:
-      - cmd: mkdir -p {{.PLAN_DIR}}
-      - for: { var: ENVIRONMENTS, split: " " }
-        cmd: |
-          echo "Processing environment: {{.ITEM}}"
-          cd infrastructure/environments/{{.ITEM}} && \
-          terragrunt stack generate && \
-          terragrunt stack run plan --out-dir={{.PLAN_DIR}}/{{.ITEM}} --json-out-dir={{.PLAN_DIR}}/{{.ITEM}}-json --non-interactive
-      - cmd: trivy config {{.PLAN_DIR}}/
+      - for:
+          var: ENVIRONMENTS
+          split: " "
+        task: plan
+        vars:
+          ENV: "{{.ITEM}}"
