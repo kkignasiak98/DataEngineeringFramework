@@ -8,8 +8,7 @@
     "git-lfs@3.7.1",
     "opentofu@1.11.6",
     "google-cloud-sdk@565.0.0",
-    "trivy@0.69.3",
-    "checkov@3.2.526"
+    "trivy@0.69.3"
   ],
   "shell": {
     "init_hook": [
