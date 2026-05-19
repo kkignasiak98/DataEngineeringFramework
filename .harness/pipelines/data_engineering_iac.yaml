@@ -30,7 +30,7 @@ pipeline:
             type: Cloud
             spec:
               imageSpec:
-                imageName: data_engineering:latest
+                imageName: alpine:3.21.3
                 connectorRef: docker_main
           execution:
             steps:
