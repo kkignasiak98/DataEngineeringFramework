@@ -30,7 +30,7 @@ pipeline:
             type: Cloud
             spec:
               imageSpec:
-                imageName: docker.io/kkignasiakdocker/data_engineering:latest
+                imageName: kkignasiakdocker/data_engineering:latest
                 connectorRef: docker_main
           execution:
             steps:
