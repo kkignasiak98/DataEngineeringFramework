@@ -1,0 +1,51 @@
+pipeline:
+  name: data_engineering_iac
+  identifier: data_engineering_iac
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: github_connector
+        repoName: DataEngineeringFramework
+        build: <+input>
+  stages:
+    - stage:
+        name: format_check
+        identifier: format_check
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: true
+          buildIntelligence:
+            enabled: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec:
+              imageSpec:
+                imageName: ubuntu-24
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: format_check
+                  identifier: format_check
+                  spec:
+                    shell: Bash
+                    command: devbox run task infra:format_check
+                  description: Check format of the IaC code
+              - step:
+                  type: Run
+                  name: scan
+                  identifier: scan
+                  spec:
+                    shell: Sh
+                    command: devbox run task infra:scan
+                  description: Scan Terraform modules for misconfigurations using Trivy
